@@ -24,6 +24,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     Project_androidTheme {
-        GreetingsPage()
+        ResultsPage()
     }
 }
