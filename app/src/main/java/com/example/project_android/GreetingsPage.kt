@@ -2,28 +2,17 @@ package com.example.project_android
 
 // can we remove the imports and replace it with .*
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.*
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.*
 
 @Preview(showBackground = true)
 @Composable
@@ -45,7 +34,7 @@ fun GreetingsPage(){
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(0)
                 ) {
-                Text(text = "Продолжить",
+                Text(text = stringResource(R.string.countinue_button),
                     fontSize = 25.sp,
                     fontFamily = FontFamily.Monospace
                     )
@@ -60,13 +49,13 @@ fun GreetingsPage(){
                     .fillMaxSize()
                 ){
                 Text(
-                    text = "Добро пожаловать в",
+                    text = stringResource(R.string.greetings),
                     fontSize = 30.sp,
                     modifier = Modifier
                         .padding(10.dp)
                 )
                 Text(
-                    text = "DogFounder",
+                    text = stringResource(R.string.app_name),
                     fontSize = 40.sp,
                     modifier = Modifier
                         .padding(10.dp),
@@ -75,7 +64,7 @@ fun GreetingsPage(){
                 Spacer(Modifier
                     .size(30.dp))
                 Text(
-                    text = "Выберите фото и узнайте, что на нем изображено.",
+                    text = stringResource(R.string.app_description),
                     fontSize = 30.sp,
                     modifier = Modifier
                         .padding(10.dp),

@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Project_androidTheme {
-                GreetingsPage()
+                ResultsPage()
             }
         }
     }
