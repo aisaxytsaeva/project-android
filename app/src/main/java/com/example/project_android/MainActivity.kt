@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.*
 import com.example.project_android.ui.theme.Project_androidTheme
 
 class MainActivity : ComponentActivity() {
@@ -14,7 +15,31 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Project_androidTheme {
-                ResultsPage()
+                val navController = rememberNavController()
+                NavHost(
+                    navController = navController,
+                    startDestination = Route.GreetingsScreen
+                ) {
+                    composable<Route.GreetingsScreen> {
+                        GreetingsPage(
+                            onButtonClick = {
+                                navController.navigate(Route.ResultsScreen)
+                            }
+                        )
+                    }
+                    composable<Route.ResultsScreen> {
+                        ResultsPage(
+                            onHomeClick = {
+                                //change to home screen
+                                print("hello")
+                            },
+                            onHistoryClick = {
+                                //change to history screen
+                                navController.navigate(Route.GreetingsScreen)
+                            }
+                        )
+                    }
+                }
             }
         }
     }
@@ -24,6 +49,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     Project_androidTheme {
-        ResultsPage()
+
     }
 }

@@ -1,22 +1,20 @@
 package com.example.project_android
 
-// can we remove the imports and replace it with .*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.*
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.*
 import androidx.compose.ui.text.font.*
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 
-@Preview(showBackground = true)
 @Composable
-fun GreetingsPage(){
+fun GreetingsPage(
+    onButtonClick: () -> Unit,
+){
     Scaffold(
         topBar = {
             Image(
@@ -26,9 +24,7 @@ fun GreetingsPage(){
         },
         bottomBar = {
             Button(
-                onClick = {
-
-                },
+                onClick = {onButtonClick()},
                 modifier = Modifier
                     .defaultMinSize(minHeight = 80.dp)
                     .fillMaxWidth(),
