@@ -3,7 +3,6 @@ package com.example.project_android.camera
 import android.Manifest
 import android.net.Uri
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -15,7 +14,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.permissions.*
 import androidx.camera.core.*
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import com.example.project_android.R
 
 @OptIn(ExperimentalPermissionsApi::class)

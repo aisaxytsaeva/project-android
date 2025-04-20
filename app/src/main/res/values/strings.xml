@@ -10,4 +10,9 @@
 
     <string name="photo_description">Длинная длинная долгая информация о собаке на картинке, ее порода, интересный факт, что-то еще</string>
     <string name="photo_name">На фото изображен\nПЕС</string>
+
+    <string name="choose_cam_gal">Выберите источник изображения</string>
+    <string name="camera">Сделать фото</string>
+    <string name="gallery">Выбрать из галереи</string>
+
 </resources>
