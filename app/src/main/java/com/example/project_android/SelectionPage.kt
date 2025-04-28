@@ -6,7 +6,8 @@ import androidx.compose.runtime.*
 import androidx.compose.material3.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.project_android.camera.CameraCaptureScreen
+import com.example.project_android.image_choose.CameraCaptureScreen
+import com.example.project_android.image_choose.rememberGalleryAccess
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -15,26 +16,52 @@ fun SelectionPage(
     onCameraSelected: () -> Unit,
     onImageSelected: (Bitmap) -> Unit,
     onImageUriCaptured: (Uri) -> Unit,
-
-
+    onBackPressed: () -> Unit
 ) {
     var showCamera by remember { mutableStateOf(false) }
-    val context = LocalContext.current
-    val galleryAccess = rememberGalleryAccess(onImageSelected)
+    var showPreview by remember { mutableStateOf(false) }
+    var showSelection by remember { mutableStateOf(true) }
+    var previewImageUri by remember { mutableStateOf<Uri?>(null) }
+    var previewBitmap by remember { mutableStateOf<Bitmap?>(null) }
 
-    if (showCamera) {
-        CameraCaptureScreen(
-            onImageCaptured = { uri ->
-                onImageUriCaptured(uri)
-                showCamera = false
+    val context = LocalContext.current
+    val galleryAccess = rememberGalleryAccess { bitmap ->
+        previewBitmap = bitmap
+        showPreview = true
+    }
+
+    if (showPreview) {
+        ImagePreviewScreen(
+            imageUri = previewImageUri,
+            bitmap = previewBitmap,
+            onConfirm = {
+                previewImageUri?.let(onImageUriCaptured)
+                previewBitmap?.let(onImageSelected)
+                showPreview = false
+            },
+            onReturnToSelectionPage = {
+                showPreview = false
+                showSelection = true
             },
 
         )
-    }else {
+    } else if (showCamera) {
+        CameraCaptureScreen(
+            onImageCaptured = { uri ->
+                previewImageUri = uri
+                showPreview = true
+                showCamera = false
+            },
+            onBackPressed = {
+                showCamera = false
+                onBackPressed()
+            }
+        )
+    } else {
         ImageSourceScreen(
             onCameraSelected = { showCamera = true },
             onGallerySelected = { galleryAccess.selectImage() },
-
+            onBackPressed = onBackPressed
         )
     }
 }
@@ -49,6 +76,7 @@ fun ImageSelectionFlow(){
         onCameraSelected = {},
         onImageSelected = {bitmap -> selectedImageBitmap = bitmap},
         onImageUriCaptured = {uri -> capturedImageUri = uri},
+        onBackPressed = {}
 
     )
 

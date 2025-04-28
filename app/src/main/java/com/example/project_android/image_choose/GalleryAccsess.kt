@@ -1,4 +1,4 @@
-package com.example.project_android
+package com.example.project_android.image_choose
 
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder

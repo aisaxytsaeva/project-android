@@ -1,4 +1,4 @@
-package com.example.project_android.camera
+package com.example.project_android.image_choose
 
 import android.Manifest
 import android.net.Uri
@@ -18,8 +18,10 @@ import com.example.project_android.R
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
+//camera ui
 fun CameraCaptureScreen(
     onImageCaptured: (Uri) -> Unit,
+    onBackPressed: () -> Unit
 
 ) {
     val context = LocalContext.current

@@ -15,4 +15,12 @@
     <string name="camera">Сделать фото</string>
     <string name="gallery">Выбрать из галереи</string>
 
+    <string name="preview">Предпросмотр</string>
+    <string name="back">Назад</string>
+    <string name="question">Вы действительно хотите выбрать другое изображение?</string>
+    <string name="diff">Выбрать другое</string>
+    <string name="suggest">Подтвердить</string>
+    <string name="not_up">Изображение не загружено</string>
+    <string name="suggestion">Подтверждение</string>
+
 </resources>

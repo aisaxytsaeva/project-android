@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 fun ImageSourceScreen(
     onCameraSelected: () -> Unit,
     onGallerySelected: () -> Unit,
+    onBackPressed: () -> Unit
 
 ) {
     Scaffold(

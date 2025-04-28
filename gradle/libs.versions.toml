@@ -10,9 +10,9 @@ activityCompose = "1.10.1"
 composeBom = "2025.04.00"
 composeNavigation = "2.8.9"
 serialization = "1.6.3"
-accompanist = "0.32.0"
+accompanist = "0.34.0"
 cameraX = "1.4.2"
-coil = "2.4.0"
+coil = "2.5.0"
 
 
 [libraries]

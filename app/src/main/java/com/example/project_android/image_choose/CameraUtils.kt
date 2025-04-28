@@ -1,4 +1,4 @@
-package com.example.project_android.camera
+package com.example.project_android.image_choose
 
 import android.content.Context
 import android.net.Uri
