@@ -13,6 +13,8 @@ serialization = "1.6.3"
 accompanist = "0.34.0"
 cameraX = "1.4.2"
 coil = "2.5.0"
+room = "2.7.1"
+ksp = "2.0.21-1.0.27" #don't change, should be the same as kotlin version
 
 
 [libraries]
@@ -40,9 +42,13 @@ camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "
 camera-extensions = { group = "androidx.camera", name = "camera-extensions", version.ref = "cameraX" }
 camera-video = { group = "androidx.camera", name = "camera-video", version.ref = "cameraX" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

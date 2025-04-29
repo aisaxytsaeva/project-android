@@ -1,11 +1,9 @@
 package com.example.project_android
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.activity.*
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.*
 import com.example.project_android.ui.theme.Project_androidTheme
 
@@ -16,6 +14,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Project_androidTheme {
                 val navController = rememberNavController()
+                val promptViewModel = ViewModelProvider(this)[PromptViewModel::class.java]
                 NavHost(
                     navController = navController,
                     startDestination = Route.GreetingsScreen
@@ -42,13 +41,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Project_androidTheme {
-
     }
 }
