@@ -1,6 +1,6 @@
 package com.example.project_android
 
-import android.graphics.Bitmap
+
 import android.net.Uri
 import androidx.compose.runtime.*
 import androidx.compose.material3.*
@@ -14,55 +14,27 @@ import com.example.project_android.image_choose.rememberGalleryAccess
 @Composable
 fun SelectionPage(
     onCameraSelected: () -> Unit,
-    onImageSelected: (Bitmap) -> Unit,
+    onImageSelected: (Uri) -> Unit,
     onImageUriCaptured: (Uri) -> Unit,
-    onBackPressed: () -> Unit
 ) {
     var showCamera by remember { mutableStateOf(false) }
-    var showPreview by remember { mutableStateOf(false) }
-    var showSelection by remember { mutableStateOf(true) }
-    var previewImageUri by remember { mutableStateOf<Uri?>(null) }
-    var previewBitmap by remember { mutableStateOf<Bitmap?>(null) }
-
     val context = LocalContext.current
-    val galleryAccess = rememberGalleryAccess { bitmap ->
-        previewBitmap = bitmap
-        showPreview = true
-    }
+    val galleryAccess = rememberGalleryAccess(onImageSelected)
 
-    if (showPreview) {
-        ImagePreviewScreen(
-            imageUri = previewImageUri,
-            bitmap = previewBitmap,
-            onConfirm = {
-                previewImageUri?.let(onImageUriCaptured)
-                previewBitmap?.let(onImageSelected)
-                showPreview = false
-            },
-            onReturnToSelectionPage = {
-                showPreview = false
-                showSelection = true
-            },
-
-        )
-    } else if (showCamera) {
+    if (showCamera) {
         CameraCaptureScreen(
             onImageCaptured = { uri ->
-                previewImageUri = uri
-                showPreview = true
+                onImageUriCaptured(uri)
                 showCamera = false
             },
-            onBackPressed = {
-                showCamera = false
-                onBackPressed()
-            }
-        )
-    } else {
+
+            )
+    }else {
         ImageSourceScreen(
             onCameraSelected = { showCamera = true },
             onGallerySelected = { galleryAccess.selectImage() },
-            onBackPressed = onBackPressed
-        )
+
+            )
     }
 }
 
@@ -70,15 +42,14 @@ fun SelectionPage(
 @Composable
 fun ImageSelectionFlow(){
     var capturedImageUri by remember { mutableStateOf<Uri?>(null) }
-    var selectedImageBitmap by remember { mutableStateOf<Bitmap?>(null)}
+    var selectedImageUri by remember { mutableStateOf<Uri?>(null)}
 
     SelectionPage(
         onCameraSelected = {},
-        onImageSelected = {bitmap -> selectedImageBitmap = bitmap},
+        onImageSelected = {uri-> selectedImageUri = uri},
         onImageUriCaptured = {uri -> capturedImageUri = uri},
-        onBackPressed = {}
 
-    )
+        )
 
 }
 
