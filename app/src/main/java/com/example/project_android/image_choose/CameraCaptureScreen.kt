@@ -18,10 +18,9 @@ import com.example.project_android.R
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-//camera ui
 fun CameraCaptureScreen(
     onImageCaptured: (Uri) -> Unit,
-    onBackPressed: () -> Unit
+
 
 ) {
     val context = LocalContext.current

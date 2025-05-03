@@ -8,6 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.*
 import com.example.project_android.ui.theme.Project_androidTheme
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.core.net.toUri
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,15 +25,44 @@ class MainActivity : ComponentActivity() {
                     composable<Route.GreetingsScreen> {
                         GreetingsPage(
                             onButtonClick = {
+                                navController.navigate(Route.SelectionScreen)
+                            }
+                        )
+                    }
+                    composable<Route.SelectionScreen> {
+                        val viewModel: SharedViewModel = viewModel()
+
+                        SelectionPage(
+                            onCameraSelected = {                            },
+                            onImageSelected = { uri ->
+                                viewModel.setImageUri(uri)
+                                navController.navigate(Route.ImagePreviewScreen.withArgs(uri))
+                            },
+                            onImageUriCaptured = { uri ->
+                                viewModel.setImageUri(uri)
+                                navController.navigate(Route.ImagePreviewScreen.withArgs(uri))
+                            }
+                        )
+                    }
+
+                    composable<Route.ImagePreviewScreen> { backStackEntry ->
+                        val viewModel: SharedViewModel = viewModel()
+                        val imageUri = backStackEntry.arguments?.getString("imageUri")?.toUri() ?: viewModel.imageUri
+
+                        ImagePreviewScreen(
+                            imageUri = imageUri,
+                            onConfirm = {
                                 navController.navigate(Route.ResultsScreen)
+                            },
+                            onReturnToSelectionPage = {
+                                navController.popBackStack()
                             }
                         )
                     }
                     composable<Route.ResultsScreen> {
                         ResultsPage(
                             onHomeClick = {
-                                //change to home screen
-                                print("hello")
+                                navController.navigate(Route.SelectionScreen)
                             },
                             onHistoryClick = {
                                 //change to history screen
