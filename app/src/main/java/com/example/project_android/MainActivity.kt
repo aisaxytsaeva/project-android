@@ -25,9 +25,9 @@ class MainActivity : ComponentActivity() {
                 val startDestination = if (appPreferences.isFirstLaunch) {
                     appPreferences.isFirstLaunch = false
 
-                    Route.GreetingsScreen
-                } else {
                     Route.SelectionScreen
+                } else {
+                    Route.GreetingsScreen
                 }
                 NavHost(
                     navController = navController,
