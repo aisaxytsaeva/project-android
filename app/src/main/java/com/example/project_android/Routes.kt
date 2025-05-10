@@ -8,4 +8,7 @@ sealed interface Route {
 
     @Serializable
     data object ResultsScreen: Route
+
+    @Serializable
+    data object HistoryScreen: Route
 }

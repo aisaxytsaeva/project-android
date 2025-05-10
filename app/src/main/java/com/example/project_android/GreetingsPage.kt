@@ -18,6 +18,8 @@ fun GreetingsPage(
     Scaffold(
         topBar = {
             Image(
+                modifier = Modifier
+                    .padding(30.dp),
                 painter = painterResource(id = R.drawable.greetings_dog),
                 contentDescription = null
             )

@@ -14,6 +14,7 @@ accompanist = "0.34.0"
 cameraX = "1.4.2"
 coil = "2.5.0"
 room = "2.7.1"
+compose = "1.8.0"
 ksp = "2.0.21-1.0.27" #don't change, should be the same as kotlin version
 
 
@@ -45,6 +46,7 @@ coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coi
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "compose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
