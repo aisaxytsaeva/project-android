@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
 
                     Route.GreetingsScreen
                 } else {
-                    Route.ResultsScreen //change to main screen
+                    Route.SelectionScreen
                 }
                 NavHost(
                     navController = navController,
@@ -84,8 +84,7 @@ class MainActivity : ComponentActivity() {
                         HistoryPage(
                             promptViewModel,
                             onBackClick = {
-                                //change to home screen
-                                navController.navigate(Route.GreetingsScreen)
+                                navController.navigate(Route.SelectionScreen)
                             }
                         )
                     }
