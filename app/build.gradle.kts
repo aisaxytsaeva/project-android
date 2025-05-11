@@ -1,3 +1,4 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -38,6 +39,9 @@ android {
     buildFeatures {
         compose = true
     }
+    aaptOptions {
+        noCompress.add("tflite") // Важно для .tflite файлов!
+    }
 }
 
 dependencies {
@@ -59,6 +63,11 @@ dependencies {
 
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.gpu)
+    implementation(libs.tensorflow.lite.support)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

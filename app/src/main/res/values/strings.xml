@@ -5,12 +5,6 @@
     <string name="app_description">Выберите фото и узнайте, что на нем изображено.</string>
     <string name="countinue_button">Продолжить</string>
 
-    <string name="home_button">Домой</string>
-    <string name="history_button">История</string>
-
-    <string name="photo_description">Длинная длинная долгая информация о собаке на картинке, ее порода, интересный факт, что-то еще</string>
-    <string name="photo_name">На фото изображен\nПЕС</string>
-
     <string name="choose_cam_gal">Выберите источник изображения</string>
     <string name="camera">Сделать фото</string>
     <string name="gallery">Выбрать из галереи</string>
@@ -22,5 +16,18 @@
     <string name="suggest">Подтвердить</string>
     <string name="not_up">Изображение не загружено</string>
     <string name="suggestion">Подтверждение</string>
+
+    <string name="home_button">Домой</string>
+    <string name="history_button">История</string>
+
+    <string name="photo_description">Длинная длинная долгая информация о собаке на картинке, ее порода, интересный факт, что-то еще</string>
+    <string name="photo_name">На фото изображен\nПЕС</string>
+    <string name="analyzing_image">Идет анализ изображения</string>
+    <string name="error_occurred">Произошла ошибка</string>
+    <string name="no_image_to_analyze">Вы не выбради изображение</string>
+
+
+
+
 
 </resources>
