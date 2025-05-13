@@ -8,6 +8,8 @@ import androidx.navigation.compose.*
 import com.example.project_android.ui.theme.Project_androidTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.core.net.toUri
+import androidx.compose.ui.platform.LocalContext
+
 
 class MainActivity : ComponentActivity() {
     private lateinit var appPreferences: AppPreferences
@@ -29,9 +31,11 @@ class MainActivity : ComponentActivity() {
                 } else {
                     Route.GreetingsScreen
                 }
+                val viewModel: SharedViewModel= viewModel()
+                val context = LocalContext.current
                 NavHost(
                     navController = navController,
-                    startDestination = startDestination
+                    startDestination = Route.GreetingsScreen
                 ) {
                     composable<Route.GreetingsScreen> {
                         GreetingsPage(
@@ -41,10 +45,8 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                     composable<Route.SelectionScreen> {
-                        val viewModel: SharedViewModel = viewModel()
-
                         SelectionPage(
-                            onCameraSelected = {                            },
+                            onCameraSelected = {},
                             onImageSelected = { uri ->
                                 viewModel.setImageUri(uri)
                                 navController.navigate(Route.ImagePreviewScreen.withArgs(uri))
@@ -57,12 +59,13 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable<Route.ImagePreviewScreen> { backStackEntry ->
-                        val viewModel: SharedViewModel = viewModel()
-                        val imageUri = backStackEntry.arguments?.getString("imageUri")?.toUri() ?: viewModel.imageUri
+                        val uri = backStackEntry.arguments?.getString("imageUri")?.toUri()
+                            ?: viewModel.imageUri
 
                         ImagePreviewScreen(
-                            imageUri = imageUri,
+                            imageUri = uri,
                             onConfirm = {
+                                viewModel.analyzeImage()
                                 navController.navigate(Route.ResultsScreen)
                             },
                             onReturnToSelectionPage = {
@@ -70,8 +73,13 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     }
+
                     composable<Route.ResultsScreen> {
                         ResultsPage(
+                            breedName = viewModel.breedName,
+                            isLoading = viewModel.isLoading,
+                            errorMessage = viewModel.errorMessage,
+                            imageUri = viewModel.imageUri,
                             onHomeClick = {
                                 navController.navigate(Route.SelectionScreen)
                             },

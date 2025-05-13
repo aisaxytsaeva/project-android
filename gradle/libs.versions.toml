@@ -13,6 +13,9 @@ serialization = "1.6.3"
 accompanist = "0.34.0"
 cameraX = "1.4.2"
 coil = "2.5.0"
+tensorflow-lite = "2.8.0"
+tensorflow-lite-gpu = "2.8.0"
+tensorflow-lite-support = "0.4.0"
 room = "2.7.1"
 compose = "1.8.0"
 ksp = "2.0.21-1.0.27" #don't change, should be the same as kotlin version
@@ -43,6 +46,9 @@ camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "
 camera-extensions = { group = "androidx.camera", name = "camera-extensions", version.ref = "cameraX" }
 camera-video = { group = "androidx.camera", name = "camera-video", version.ref = "cameraX" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+tensorflow-lite = { group = "org.tensorflow", name = "tensorflow-lite", version.ref = "tensorflow-lite" }
+tensorflow-lite-gpu = { group = "org.tensorflow", name = "tensorflow-lite-gpu", version.ref = "tensorflow-lite-gpu" }
+tensorflow-lite-support = { group = "org.tensorflow", name = "tensorflow-lite-support", version.ref = "tensorflow-lite-support" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
