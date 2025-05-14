@@ -19,7 +19,7 @@ fun HistoryPage (
     viewModel: PromptViewModel,
     onBackClick: () -> Unit
 ) {
-    val promptList by viewModel.promptList.observeAsState()
+    val promptList by viewModel.promptList.observeAsState(initial = emptyList())
 
     Scaffold(
         topBar = {
@@ -60,21 +60,23 @@ fun HistoryPage (
                     .padding(innerPadding)
                     .fillMaxSize()
             ){
-                promptList?.let {
-                    LazyColumn(
-                        content = {
-                            itemsIndexed(it) { index: Int, item: Prompt ->
-                                HistoryItem(item = item)
-                            }
-                        }
-                    )
-                }?: Text(
+                if (promptList.isNullOrEmpty()) {
+                    Text(
                         text = "Ни одного запроса не было сделано",
                         textAlign = TextAlign.Center,
                         fontSize = 30.sp,
                         modifier = Modifier
                             .padding(10.dp)
                     )
+                } else {
+                    LazyColumn(
+                        content = {
+                            items(promptList!!) {
+                                item -> HistoryItem(item = item)
+                            }
+                        }
+                    )
+                }
             }
         }
     )

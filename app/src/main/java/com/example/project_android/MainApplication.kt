@@ -15,7 +15,9 @@ class MainApplication : Application() {
             applicationContext,
             PromptDatabase::class.java,
             PromptDatabase.NAME
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
 }

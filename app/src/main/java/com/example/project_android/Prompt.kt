@@ -6,5 +6,4 @@ import androidx.room.*
 data class Prompt(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,//maybe add image save
-    val description: String,
 )

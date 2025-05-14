@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                 val context = LocalContext.current
                 NavHost(
                     navController = navController,
-                    startDestination = Route.GreetingsScreen
+                    startDestination = startDestination
                 ) {
                     composable<Route.GreetingsScreen> {
                         GreetingsPage(

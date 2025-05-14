@@ -24,11 +24,5 @@ fun HistoryItem(
             fontSize = 20.sp,
             color = Color.LightGray
         )
-
-        Text(
-            text = item.description,
-            fontSize = 12.sp,
-            color = Color.White
-        )
     }
 }

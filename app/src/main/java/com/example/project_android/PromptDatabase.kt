@@ -4,7 +4,7 @@ import androidx.room.*
 
 @Database(
     entities = [Prompt::class],
-    version = 1
+    version = 2
 )
 abstract class PromptDatabase : RoomDatabase() {
     companion object {

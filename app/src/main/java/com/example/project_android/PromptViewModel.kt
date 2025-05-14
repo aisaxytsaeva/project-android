@@ -9,9 +9,9 @@ class PromptViewModel : ViewModel() {
 
     val promptList : LiveData<List<Prompt>> = promptDao.getAllPrompts()
 
-    fun addPrompt(name: String, imagePath: String, description: String) {
+    fun addPrompt(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            promptDao.addPrompt(prompt = Prompt(name = name, description = description))
+            promptDao.addPrompt(prompt = Prompt(name = name))
         }
     }
 }
