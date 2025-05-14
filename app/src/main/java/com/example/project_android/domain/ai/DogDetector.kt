@@ -1,4 +1,4 @@
-package com.example.project_android
+package com.example.project_android.domain.ai
 
 import android.content.Context
 import android.graphics.Bitmap

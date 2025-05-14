@@ -1,6 +1,7 @@
-package com.example.project_android
+package com.example.project_android.domain.ai
 
 import android.content.Context
+import android.content.res.AssetFileDescriptor
 import android.graphics.*
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -156,7 +157,7 @@ class EfficientDetDetector(context: Context) {
         Exception(message, cause)
 
 
-    private fun android.content.res.AssetFileDescriptor.mapReadOnly(): ByteBuffer {
+    private fun AssetFileDescriptor.mapReadOnly(): ByteBuffer {
         return FileInputStream(fileDescriptor).channel.map(
             FileChannel.MapMode.READ_ONLY,
             startOffset,

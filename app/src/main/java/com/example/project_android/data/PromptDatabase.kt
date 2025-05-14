@@ -1,6 +1,7 @@
-package com.example.project_android
+package com.example.project_android.data
 
-import androidx.room.*
+import androidx.room.Database
+import androidx.room.RoomDatabase
 
 @Database(
     entities = [Prompt::class],

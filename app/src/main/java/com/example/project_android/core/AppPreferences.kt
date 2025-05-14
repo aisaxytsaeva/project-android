@@ -1,4 +1,4 @@
-package com.example.project_android
+package com.example.project_android.core
 
 import android.content.Context
 import android.content.SharedPreferences

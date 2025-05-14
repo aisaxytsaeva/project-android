@@ -9,6 +9,15 @@ import com.example.project_android.ui.theme.Project_androidTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.core.net.toUri
 import androidx.compose.ui.platform.LocalContext
+import com.example.project_android.core.AppPreferences
+import com.example.project_android.core.Route
+import com.example.project_android.presentation.screens.GreetingsPage
+import com.example.project_android.presentation.screens.HistoryPage
+import com.example.project_android.presentation.screens.ImagePreviewScreen
+import com.example.project_android.presentation.screens.ResultsPage
+import com.example.project_android.presentation.screens.SelectionPage
+import com.example.project_android.presentation.viewmodel.PromptViewModel
+import com.example.project_android.presentation.viewmodel.SharedViewModel
 
 
 class MainActivity : ComponentActivity() {
@@ -31,7 +40,7 @@ class MainActivity : ComponentActivity() {
                 } else {
                     Route.GreetingsScreen
                 }
-                val viewModel: SharedViewModel= viewModel()
+                val viewModel: SharedViewModel = viewModel()
                 val context = LocalContext.current
                 NavHost(
                     navController = navController,

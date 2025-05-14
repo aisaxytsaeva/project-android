@@ -1,4 +1,4 @@
-package com.example.project_android
+package com.example.project_android.core
 
 import kotlinx.serialization.Serializable
 import android.net.Uri

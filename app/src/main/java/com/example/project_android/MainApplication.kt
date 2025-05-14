@@ -2,6 +2,7 @@ package com.example.project_android
 
 import android.app.Application
 import androidx.room.Room
+import com.example.project_android.data.PromptDatabase
 
 
 class MainApplication : Application() {

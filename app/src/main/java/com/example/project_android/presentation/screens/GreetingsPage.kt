@@ -1,4 +1,4 @@
-package com.example.project_android
+package com.example.project_android.presentation.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -10,6 +10,7 @@ import androidx.compose.ui.res.*
 import androidx.compose.ui.text.font.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.*
+import com.example.project_android.R
 
 @Composable
 fun GreetingsPage(

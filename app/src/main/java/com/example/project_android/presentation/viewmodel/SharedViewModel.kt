@@ -1,4 +1,4 @@
-package com.example.project_android
+package com.example.project_android.presentation.viewmodel
 
 import android.app.Application
 import android.content.ContentResolver
@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.project_android.domain.ai.DogDetector
 import kotlinx.coroutines.launch
 import java.io.IOException
 

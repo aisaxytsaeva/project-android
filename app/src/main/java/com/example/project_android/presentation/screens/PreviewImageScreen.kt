@@ -1,4 +1,4 @@
-package com.example.project_android
+package com.example.project_android.presentation.screens
 
 import androidx.compose.runtime.*
 import androidx.compose.foundation.layout.*
@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.ui.res.stringResource
 import coil.compose.AsyncImage
+import com.example.project_android.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

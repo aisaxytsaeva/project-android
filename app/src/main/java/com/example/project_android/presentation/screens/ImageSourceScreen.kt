@@ -1,4 +1,4 @@
-package com.example.project_android
+package com.example.project_android.presentation.screens
 
 
 import androidx.compose.runtime.*
@@ -18,8 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-
-
+import com.example.project_android.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)

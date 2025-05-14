@@ -1,4 +1,4 @@
-package com.example.project_android.image_choose
+package com.example.project_android.domain.image_choose
 
 import android.content.Context
 import android.net.Uri

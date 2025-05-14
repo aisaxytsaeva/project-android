@@ -1,4 +1,4 @@
-package com.example.project_android
+package com.example.project_android.presentation.screens
 
 
 import android.net.Uri
@@ -6,8 +6,8 @@ import androidx.compose.runtime.*
 import androidx.compose.material3.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.project_android.image_choose.CameraCaptureScreen
-import com.example.project_android.image_choose.rememberGalleryAccess
+import com.example.project_android.domain.image_choose.CameraCaptureScreen
+import com.example.project_android.domain.image_choose.rememberGalleryAccess
 
 
 @OptIn(ExperimentalMaterial3Api::class)

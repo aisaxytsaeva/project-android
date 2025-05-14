@@ -1,4 +1,4 @@
-package com.example.project_android
+package com.example.project_android.presentation.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,6 +13,9 @@ import androidx.compose.ui.unit.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import com.example.project_android.presentation.viewmodel.PromptViewModel
+import com.example.project_android.R
+import com.example.project_android.presentation.screens.components.HistoryItem
 
 @Composable
 fun HistoryPage (
@@ -72,7 +75,8 @@ fun HistoryPage (
                     LazyColumn(
                         content = {
                             items(promptList!!) {
-                                item -> HistoryItem(item = item)
+                                item ->
+                                HistoryItem(item = item)
                             }
                         }
                     )
