@@ -85,7 +85,8 @@ class MainActivity : ComponentActivity() {
                             },
                             onHistoryClick = {
                                 navController.navigate(Route.HistoryScreen)
-                            }
+                            },
+                            viewModel = promptViewModel
                         )
                     }
                     composable<Route.HistoryScreen> {

@@ -25,7 +25,8 @@ fun ResultsPage(
     errorMessage: String?,
     imageUri: Uri?,
     onHomeClick: () -> Unit,
-    onHistoryClick: () -> Unit
+    onHistoryClick: () -> Unit,
+    viewModel: PromptViewModel
 ) {
     Scaffold(
         bottomBar = {
@@ -101,6 +102,7 @@ fun ResultsPage(
                         )
                     }
                     breedName != null -> {
+                        viewModel.addPrompt(name = breedName)
                         AsyncImage(
                             model = imageUri,
                             contentDescription = null,
