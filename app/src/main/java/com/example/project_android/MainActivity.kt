@@ -100,7 +100,7 @@ class MainActivity : ComponentActivity() {
                         HistoryPage(
                             promptViewModel,
                             onBackClick = {
-                                navController.navigate(Route.SelectionScreen)
+                                navController.navigate(Route.MainScreen)
                             }
                         )
                     }
