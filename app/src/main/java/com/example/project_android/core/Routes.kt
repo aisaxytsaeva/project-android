@@ -35,5 +35,8 @@ sealed interface Route {
     data object ResultsScreen: Route
 
     @Serializable
+    data object  MainScreen: Route
+
+    @Serializable
     data object HistoryScreen: Route
 }

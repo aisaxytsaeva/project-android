@@ -9,13 +9,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.project_android.domain.image_choose.CameraCaptureScreen
 import com.example.project_android.domain.image_choose.rememberGalleryAccess
 
-
+@Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SelectionPage(
-    onCameraSelected: () -> Unit,
-    onImageSelected: (Uri) -> Unit,
-    onImageUriCaptured: (Uri) -> Unit,
+    onCameraSelected: () -> Unit = {},
+    onImageSelected: (Uri) -> Unit = {},
+    onImageUriCaptured: (Uri) -> Unit = {},
 ) {
     var showCamera by remember { mutableStateOf(false) }
     val context = LocalContext.current

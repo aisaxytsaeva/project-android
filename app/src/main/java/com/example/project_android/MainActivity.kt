@@ -14,6 +14,7 @@ import com.example.project_android.core.Route
 import com.example.project_android.presentation.screens.GreetingsPage
 import com.example.project_android.presentation.screens.HistoryPage
 import com.example.project_android.presentation.screens.ImagePreviewScreen
+import com.example.project_android.presentation.screens.MainPage
 import com.example.project_android.presentation.screens.ResultsPage
 import com.example.project_android.presentation.screens.SelectionPage
 import com.example.project_android.presentation.viewmodel.PromptViewModel
@@ -90,10 +91,7 @@ class MainActivity : ComponentActivity() {
                             errorMessage = viewModel.errorMessage,
                             imageUri = viewModel.imageUri,
                             onHomeClick = {
-                                navController.navigate(Route.SelectionScreen)
-                            },
-                            onHistoryClick = {
-                                navController.navigate(Route.HistoryScreen)
+                                navController.navigate(Route.MainScreen)
                             },
                             viewModel = promptViewModel
                         )
@@ -104,6 +102,17 @@ class MainActivity : ComponentActivity() {
                             onBackClick = {
                                 navController.navigate(Route.SelectionScreen)
                             }
+                        )
+                    }
+                    composable<Route.MainScreen> {
+                        MainPage(
+                            onSelectionClick = {
+                                navController.navigate(Route.SelectionScreen)
+                            },
+                            onHistoryClick = {
+                                navController.navigate(Route.HistoryScreen)
+                            },
+
                         )
                     }
                 }

@@ -5,25 +5,30 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.*
 import android.net.Uri
 import android.graphics.Bitmap
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.ui.platform.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import com.example.project_android.R
+import com.example.project_android.ui.theme.MyFontFamily
+import com.example.project_android.ui.theme.black
+import com.example.project_android.ui.theme.white
 
+@Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ImagePreviewScreen(
     imageUri: Uri? = null,
     bitmap: Bitmap? = null,
-    onConfirm: () -> Unit,
-    onReturnToSelectionPage: () -> Unit,
+    onConfirm: () -> Unit = {},
+    onReturnToSelectionPage: () -> Unit = {},
 
 ) {
     val context = LocalContext.current
@@ -31,35 +36,74 @@ fun ImagePreviewScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.preview)) },
-                navigationIcon = {
-                    IconButton(onClick = {
-                        onReturnToSelectionPage()
-                    }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Назад")
-                    }
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(80.dp)
+                    .statusBarsPadding()
+            ) {
+                IconButton(
+                    onClick = onReturnToSelectionPage,
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                        .padding(5.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.back),
+                        contentDescription = "Назад",
+                        tint = black
+                    )
                 }
-            )
+                Text(text = stringResource(R.string.preview),
+                    fontSize = 18.sp,
+                    color = black,
+                    fontFamily = MyFontFamily,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
         },
         bottomBar = {
-            BottomAppBar {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Button(
                         onClick = { showDialog = true },
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.Red)
+                        colors = ButtonDefaults.buttonColors(containerColor = black),
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(54.dp)
                     ) {
-                        Text(stringResource(R.string.diff))
+                        Text(
+                            stringResource(R.string.diff),
+                            fontFamily = MyFontFamily,
+                            fontSize = 18.sp
+                        )
                     }
-                    Spacer(modifier = Modifier.width(16.dp))
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
                     Button(
                         onClick = onConfirm,
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.Green)
+                        colors = ButtonDefaults.buttonColors(containerColor = black),
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(54.dp)
                     ) {
-                        Text(stringResource(R.string.suggest))
+                        Text(
+                            stringResource(R.string.suggest),
+                            fontFamily = MyFontFamily,
+                            fontSize = 18.sp
+                        )
                     }
                 }
             }
@@ -69,7 +113,7 @@ fun ImagePreviewScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .background(Color.Black)
+                .background(black)
         ) {
             if (imageUri != null) {
                 AsyncImage(
@@ -89,7 +133,8 @@ fun ImagePreviewScreen(
                 Text(
                     stringResource(R.string.not_up),
                     modifier = Modifier.align(Alignment.Center),
-                    color = Color.White
+                    color = white,
+                    fontFamily = MyFontFamily
                 )
             }
         }

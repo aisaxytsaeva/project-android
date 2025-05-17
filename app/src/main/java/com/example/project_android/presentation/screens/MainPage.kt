@@ -1,7 +1,5 @@
 package com.example.project_android.presentation.screens
 
-
-import androidx.compose.runtime.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,13 +11,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project_android.R
@@ -29,26 +26,14 @@ import com.example.project_android.ui.theme.black
 import com.example.project_android.ui.theme.white
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ImageSourceScreen(
-    onCameraSelected: () -> Unit ,
-    onGallerySelected: () -> Unit ,
 
-
+fun MainPage(
+    onSelectionClick: () -> Unit ,
+    onHistoryClick: () -> Unit ,
 ) {
     Project_androidTheme {
-        Scaffold(
-            topBar = {
-                Text(
-                    text = stringResource(R.string.choose_cam_gal),
-                    fontSize = 30.sp,
-                    modifier = Modifier
-                        .padding(top = 65.dp, start = 8.dp, end = 8.dp, bottom = 8.dp),
-                    textAlign = TextAlign.Center
-                )
-            }
-        ) { paddingValues ->
+        Scaffold(content = { paddingValues ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -58,7 +43,7 @@ fun ImageSourceScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Button(
-                    onClick = onCameraSelected,
+                    onClick = { onSelectionClick() },
                     shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = black,
@@ -69,7 +54,7 @@ fun ImageSourceScreen(
                         .width(320.dp)
                 ) {
                     Text(
-                        text = stringResource(R.string.camera),
+                        text = stringResource(R.string.usage),
                         fontSize = 18.sp,
                         fontFamily = MyFontFamily
                     )
@@ -78,8 +63,8 @@ fun ImageSourceScreen(
                 Spacer(modifier = Modifier.height(48.dp))
 
                 Button(
-                    onClick = onGallerySelected,
-                    shape = RoundedCornerShape(10.dp),
+                    onClick = { onHistoryClick() },
+                    shape = RoundedCornerShape(15.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = black,
                         contentColor = white
@@ -89,12 +74,12 @@ fun ImageSourceScreen(
                         .width(320.dp)
                 ) {
                     Text(
-                        text = stringResource(R.string.gallery),
-                        fontSize = 15.sp,
+                        text = stringResource(R.string.history_button),
+                        fontSize = 20.sp,
                         fontFamily = MyFontFamily
                     )
                 }
             }
-        }
+        })
     }
 }

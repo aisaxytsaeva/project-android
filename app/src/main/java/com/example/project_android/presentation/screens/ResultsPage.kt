@@ -7,7 +7,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.*
 import androidx.compose.ui.res.*
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.graphics.*
@@ -15,10 +14,13 @@ import androidx.compose.ui.draw.*
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.text.font.*
 import android.net.Uri
-
 import coil.compose.AsyncImage
 import com.example.project_android.presentation.viewmodel.PromptViewModel
 import com.example.project_android.R
+import com.example.project_android.ui.theme.MyFontFamily
+import com.example.project_android.ui.theme.black
+import com.example.project_android.ui.theme.white
+
 
 @Composable
 fun ResultsPage(
@@ -26,8 +28,7 @@ fun ResultsPage(
     isLoading: Boolean,
     errorMessage: String?,
     imageUri: Uri?,
-    onHomeClick: () -> Unit,
-    onHistoryClick: () -> Unit,
+    onHomeClick: () -> Unit ,
     viewModel: PromptViewModel
 ) {
     Scaffold(
@@ -35,31 +36,25 @@ fun ResultsPage(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(50.dp),
+                horizontalArrangement = Arrangement.Center
             ) {
                 Button(
                     onClick = onHomeClick,
+                    shape = RoundedCornerShape(15.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = black,
+                        contentColor = white
+                    ),
                     modifier = Modifier
-                        .defaultMinSize(minHeight = 80.dp)
-                        .weight(1f),
-                    shape = RoundedCornerShape(0)
+                        .aspectRatio(4f)
+                        .width(300.dp)
+
+
                 ) {
-                    Text(
-                        text = stringResource(R.string.home_button),
+                    Text(text = stringResource(R.string.home_button),
                         fontSize = 25.sp,
-                        fontFamily = FontFamily.Monospace
-                    )
-                }
-                Button(
-                    onClick = onHistoryClick,
-                    modifier = Modifier
-                        .defaultMinSize(minHeight = 80.dp)
-                        .weight(1f),
-                    shape = RoundedCornerShape(0)
-                ) {
-                    Text(
-                        text = stringResource(R.string.history_button),
-                        fontSize = 25.sp,
-                        fontFamily = FontFamily.Monospace
+                        fontFamily = MyFontFamily
                     )
                 }
             }
@@ -85,7 +80,7 @@ fun ResultsPage(
                     }
                     errorMessage != null -> {
                         Image(
-                            painter = painterResource(id = R.drawable.greetings_dog),
+                            painter = painterResource(id = R.drawable.dog),
                             contentDescription = null
                         )
                         Spacer(Modifier.size(30.dp))
@@ -126,7 +121,7 @@ fun ResultsPage(
                     }
                     else -> {
                         Image(
-                            painter = painterResource(id = R.drawable.greetings_dog),
+                            painter = painterResource(id = R.drawable.dog),
                             contentDescription = null
                         )
                         Spacer(Modifier.size(30.dp))
